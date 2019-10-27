@@ -3,6 +3,7 @@ class Solution:
     @param a, b, n: 32bit integers
     @return: An integer
     """
+
     def fastPower(self, a, b, n):
         # a ^ n % b
         # 比如 n=5,可以看做 a^(101)2 % b （5的二进制是101）
@@ -15,6 +16,12 @@ class Solution:
         while n > 0:
             if n % 2 == 1:
                 ans = (ans * a) % b
+                # mod b 是优化，跳过去看
             a = a * a % b
             n = n // 2
+            print(n)
         return ans % b
+
+
+if __name__ == '__main__':
+    S = Solution().fastPower(2, 3, 5)
