@@ -1,34 +1,30 @@
-def BinarySearch (nums,target):
-    '''
-    Find the last position of target
-    :param nums: [0,1,2,3,3,4,5,6,7]
-    :param target: 3
-    :return: 3
-    '''
-    if not nums:
-        return -1
+class Solution:
+    # @param {int[]} A an integer array sorted in ascending order
+    # @param {int} target an integer
+    # @return {int} an integer
+    def findPosition(self, A, target):
+        # Write your code here
+        if len(A) == 0 or A == None:
+            return -1
 
-    start, end = 0, len(nums) -1
+        start = 0
+        end = len(A) - 1
 
-    while start + 1 < end :
-        mid = (start + end)// 2
+        if target < A[start] or target > A[end]:
+            return -1
 
-        if nums[mid] < target:
-            start = mid
+        while start + 1 < end:
+            mid = start + (end - start) / 2
+            if target == A[mid]:
+                return mid
+            elif target > A[mid]:
+                start = mid
+            else:
+                end = mid
 
-        elif nums[mid] == target:
-            start = mid
-
+        if target == A[end]:
+            return end
+        elif target == A[start]:
+            return start
         else:
-            end = mid
-        print(nums[start:end+1])
-
-    if nums[end] == target:
-        return end
-    if nums[start] == target:
-        return start
-    return -1
-
-if __name__ == '__main__':
-    print(BinarySearch([1,1], 1))
-    #print(BinarySearch([0,1,1,2,3,3,4,5,6,7],1))
+            return -1
