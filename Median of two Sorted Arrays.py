@@ -31,7 +31,8 @@ class Solution:
                 end = mid
             else:
                 start = mid
-        if self.count_smaller_or_equal(A, start) + self.count_smaller_or_equal(B, start) == k:
+
+        if self.count_smaller_or_equal(A, start) + self.count_smaller_or_equal(B, start) >= k:
             return start
         return end
 
